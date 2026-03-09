@@ -188,7 +188,7 @@ export default function App() {
               {/* SALA PRINCIPAL BLANCA */}
               <div className="flex flex-col gap-2 relative z-0 mt-3">
                 
-                {/* Cold Aisle 2 */}
+                {/* Cold Aisle 2 (Alimenta solo Fila C) */}
                 <div className="bg-blue-100/60 border border-blue-200 rounded p-2 flex items-center justify-between h-16 relative">
                   {showMeasurements && (
                     <div className="absolute inset-y-1 left-1 w-3 border-y-2 border-l-2 border-blue-400 pointer-events-none flex items-center justify-center z-10">
@@ -210,12 +210,11 @@ export default function App() {
                       <span className="bg-slate-200 text-slate-700 text-[9px] font-black -rotate-90 whitespace-nowrap px-1 shadow-sm border border-slate-300">1.00 m</span>
                     </div>
                   )}
-                  {/* Spacer invisible para no pisar la cota */}
                   <div className="w-1"></div>
                   {rows.C.map((rack, i) => <Rack key={i} {...rack} onClick={handleItemClick} />)}
                 </div>
 
-                {/* Hot Aisle 1 */}
+                {/* Hot Aisle 1 (Retorno de Fila C y Fila B) */}
                 <div className="bg-red-100/60 border border-red-200 rounded p-2 flex items-center justify-between h-16 relative">
                   {showMeasurements && (
                     <div className="absolute inset-y-1 left-1 w-3 border-y-2 border-l-2 border-red-400 pointer-events-none flex items-center justify-center z-10">
@@ -226,6 +225,7 @@ export default function App() {
                     <Zap size={20}/> PASILLO CALIENTE #1
                   </div>
                   <div className="flex gap-4 text-red-400">
+                    {/* El aire caliente sale de C (hacia abajo) y de B (hacia arriba) */}
                     <ArrowUp /><ArrowDown /><ArrowUp /><ArrowDown />
                   </div>
                 </div>
@@ -241,7 +241,7 @@ export default function App() {
                   {rows.B.map((rack, i) => <Rack key={i} {...rack} onClick={handleItemClick} />)}
                 </div>
 
-                {/* Cold Aisle 1 */}
+                {/* Cold Aisle 1 (Alimenta Fila B y Fila A) - CORREGIDO */}
                 <div className="bg-blue-100/60 border border-blue-200 rounded p-2 flex items-center justify-between h-16 relative">
                   {showMeasurements && (
                     <div className="absolute inset-y-1 left-1 w-3 border-y-2 border-l-2 border-blue-400 pointer-events-none flex items-center justify-center z-10">
@@ -252,7 +252,8 @@ export default function App() {
                     <Wind size={20}/> PASILLO FRÍO #1
                   </div>
                   <div className="flex gap-4 text-blue-500">
-                    <ArrowUp /><ArrowUp /><ArrowUp /><ArrowUp />
+                    {/* El aire frío entra a B (hacia arriba) y a A (hacia abajo) */}
+                    <ArrowUp /><ArrowDown /><ArrowUp /><ArrowDown />
                   </div>
                 </div>
 
@@ -267,7 +268,7 @@ export default function App() {
                   {rows.A.map((rack, i) => <Rack key={i} {...rack} onClick={handleItemClick} />)}
                 </div>
 
-                {/* Hot Aisle 2 */}
+                {/* Hot Aisle 2 (Retorno de Fila A) */}
                 <div className="bg-red-100/80 border-2 border-red-400 border-dashed rounded p-2 flex items-center justify-between h-16 relative overflow-hidden shadow-inner">
                   {showMeasurements && (
                     <div className="absolute inset-y-1 left-1 w-3 border-y-2 border-l-2 border-red-400 pointer-events-none flex items-center justify-center z-20">
